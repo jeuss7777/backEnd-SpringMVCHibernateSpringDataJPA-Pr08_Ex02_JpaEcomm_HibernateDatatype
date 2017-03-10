@@ -17,8 +17,7 @@ public class SaleServiceImpl implements SaleService {
 	private SaleDAO saleDAO;
 
 	public List<Sale> findAll() {
-		List<Sale> listSale = saleDAO.findAll();
-		
+		List<Sale> listSale = saleDAO.findAll();		
 		return listSale;
 	}
 

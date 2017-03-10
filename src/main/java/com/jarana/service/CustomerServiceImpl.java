@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jarana.entities.Customer;
+import com.jarana.entities.Part;
 import com.jarana.entities.Sale;
 import com.jarana.entities.Tax;
 import com.jarana.repository.CustomerDAO;
@@ -20,6 +21,21 @@ public class CustomerServiceImpl implements CustomerService {
 
 	public List<Customer> findAll() {
 		List<Customer> listCustomer = customerDAO.findAll();
+		
+		if(listCustomer != null){
+			//customer.getTax().toString();
+				
+				for(Customer customer : listCustomer){
+					customer.getSales();
+					if(customer.getSales() != null){
+						for(Sale sale : customer.getSales()){
+							sale.getPart().getPaPartNumber();
+	
+						}
+					}
+				}
+		}
+		
 		return listCustomer;
 	}
 
@@ -28,6 +44,12 @@ public class CustomerServiceImpl implements CustomerService {
 		Tax tax = customer.getTax();
 		tax.toString();
 		Set<Sale> sales=customer.getSales();
+		if(sales != null){
+			for(Sale sale : sales){
+				sale.getPart().getPaPartNumber();
+
+			}
+		}
 		sales.toString();
 		return customer;
 	}
