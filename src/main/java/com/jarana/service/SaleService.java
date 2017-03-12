@@ -9,4 +9,6 @@ public interface SaleService {
 	public void create (Sale sale);
 	public void update (Sale sale);
 	public void delete (Sale sale);
+	
+	
 }

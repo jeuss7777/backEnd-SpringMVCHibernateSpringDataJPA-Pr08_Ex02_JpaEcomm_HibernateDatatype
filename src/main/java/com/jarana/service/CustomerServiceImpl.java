@@ -41,12 +41,13 @@ public class CustomerServiceImpl implements CustomerService {
 
 	public Customer findOne(Long cuCustomerId) {
 		final Customer customer = customerDAO.findOne(cuCustomerId);
-		Tax tax = customer.getTax();
-		tax.toString();
+		//Tax tax = customer.getTax();
+		//tax.toString();
 		Set<Sale> sales=customer.getSales();
 		if(sales != null){
 			for(Sale sale : sales){
 				sale.getPart().getPaPartNumber();
+				
 
 			}
 		}

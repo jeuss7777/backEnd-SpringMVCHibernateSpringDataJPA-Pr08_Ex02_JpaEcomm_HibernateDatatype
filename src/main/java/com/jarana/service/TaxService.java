@@ -4,7 +4,7 @@ import java.util.List;
 import com.jarana.entities.Tax;
 public interface TaxService {
 	public List<Tax> findAll();
-//	public Tax findOne(TYPE PK);
+	public Tax findByTaStateCode(String taStateCode);
 //	public List<Tax> findBy-ReplaceFIELD(TYPE FIELD);
 	public void create (Tax tax);
 	public void update (Tax tax);

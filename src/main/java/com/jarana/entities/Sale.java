@@ -24,7 +24,7 @@ public class Sale implements java.io.Serializable {
 	private Part part;
 	private Integer saQuantitySold;
 	private BigDecimal saPriceAmount;
-	private BigDecimal tax;
+	private Tax tax;
 
 	public Sale() {
 	}
@@ -34,7 +34,7 @@ public class Sale implements java.io.Serializable {
 	}
 
 	public Sale(int saInvoiceNumber, Customer customer, Part part, Integer saQuantitySold, BigDecimal saPriceAmount,
-			BigDecimal tax) {
+			Tax tax) {
 		this.saInvoiceNumber = saInvoiceNumber;
 		this.customer = customer;
 		this.part = part;
@@ -54,7 +54,7 @@ public class Sale implements java.io.Serializable {
 		this.saInvoiceNumber = saInvoiceNumber;
 	}
 	
-	@JsonIgnore
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "sa_customer_id")
 	public Customer getCustomer() {
@@ -93,12 +93,13 @@ public class Sale implements java.io.Serializable {
 		this.saPriceAmount = saPriceAmount;
 	}
 
-	@Column(name = "tax", precision = 6)
-	public BigDecimal getTax() {
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "sa_tax_id")
+	public Tax getTax() {
 		return this.tax;
 	}
 
-	public void setTax(BigDecimal tax) {
+	public void setTax(Tax tax) {
 		this.tax = tax;
 	}
 

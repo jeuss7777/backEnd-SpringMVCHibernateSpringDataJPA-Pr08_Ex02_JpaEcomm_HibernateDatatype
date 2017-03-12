@@ -21,12 +21,19 @@ public class SaleServiceImpl implements SaleService {
 		return listSale;
 	}
 
+//	public Sale findOne(int sa_invoice_number) {
+//		
+//		final Sale sale= saleDAO.findOne(sa_invoice_number);
+//		Part part = sale.getPart();
+//		part.toString();
+//		return sale;
+//	}
+	
 	public Sale findOne(int sa_invoice_number) {
 		
-		final Sale sale= saleDAO.findOne(sa_invoice_number);
-		Part part = sale.getPart();
-		part.toString();
-		return sale;
+		
+		return saleDAO.findOneSale(sa_invoice_number);
+		
 	}
 
 //	public List<Sale> findBy-ReplaceFIELD(TYPE FIELD) {

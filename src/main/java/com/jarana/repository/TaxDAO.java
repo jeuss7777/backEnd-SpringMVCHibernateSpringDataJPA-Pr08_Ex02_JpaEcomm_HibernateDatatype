@@ -7,7 +7,8 @@ import org.springframework.stereotype.Repository;
 import com.jarana.entities.Tax;
 
 @Repository("taxDAO")
-public interface TaxDAO extends JpaRepository<Tax, String> {
+public interface TaxDAO extends JpaRepository<Tax, Integer> {
 
-	 //List<Tax> findBy-ReplaceFIELD(TYPE FIELD);
+	 Tax findByTaStateCode(String taStateCode);
+	
 }

@@ -40,4 +40,9 @@ public class TaxServiceImpl implements TaxService {
 		taxDAO.delete(tax);
 	}
 
+	@Override
+	public Tax findByTaStateCode(String taStateCode) {
+		return taxDAO.findByTaStateCode(taStateCode);
+	}
+
 }

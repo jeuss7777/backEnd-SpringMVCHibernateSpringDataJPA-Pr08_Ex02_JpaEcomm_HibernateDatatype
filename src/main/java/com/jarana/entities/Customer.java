@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Customer implements java.io.Serializable {
 
 	private Long cuCustomerId;
-	private Tax tax;
+	private String cuState;
 	private String cuFirstName;
 	private String cuLastName;
 	private String cuAddress;
@@ -39,10 +39,10 @@ public class Customer implements java.io.Serializable {
 		this.cuCustomerId = cuCustomerId;
 	}
 
-	public Customer(Long cuCustomerId, Tax tax, String cuFirstName, String cuLastName, String cuAddress, String cuCity,
+	public Customer(Long cuCustomerId, String cuState, String cuFirstName, String cuLastName, String cuAddress, String cuCity,
 			Integer cuZipCode, String cuTelephone, Set<Sale> sales) {
 		this.cuCustomerId = cuCustomerId;
-		this.tax = tax;
+		this.cuState = cuState;
 		this.cuFirstName = cuFirstName;
 		this.cuLastName = cuLastName;
 		this.cuAddress = cuAddress;
@@ -63,15 +63,13 @@ public class Customer implements java.io.Serializable {
 		this.cuCustomerId = cuCustomerId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "cu_state")
-	public Tax getTax() {
-		return this.tax;
+	@Column(name = "cu_state")
+	public String getCuState() {
+		return cuState;
 	}
 
-	
-	public void setTax(Tax tax) {
-		this.tax = tax;
+	public void setCuState(String cuState) {
+		this.cuState = cuState;
 	}
 
 	@Column(name = "cu_first_name", length = 40)
@@ -127,7 +125,8 @@ public class Customer implements java.io.Serializable {
 	public void setCuTelephone(String cuTelephone) {
 		this.cuTelephone = cuTelephone;
 	}
-
+	
+	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 	public Set<Sale> getSales() {
 		return this.sales;
